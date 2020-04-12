@@ -1,5 +1,8 @@
 package com.omega.testmod;
 
+import com.omega.testmod.util.RegistryHandler;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -18,10 +21,20 @@ public class TestMod
     public TestMod() {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
+
+        RegistryHandler.init();
+
         MinecraftForge.EVENT_BUS.register(this);
     }
 
     private void setup(final FMLCommonSetupEvent event) {    }
 
     private void doClientStuff(final FMLClientSetupEvent event) {    }
+
+    public static final ItemGroup TAB = new ItemGroup("TestTab") {
+        @Override
+        public ItemStack createIcon() {
+            return new ItemStack(RegistryHandler.TITANIUM_INGOT.get());
+        }
+    };
 }
