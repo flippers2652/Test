@@ -13,6 +13,7 @@ public class TestMod
 {
 
     private static final Logger LOGGER = LogManager.getLogger();
+    public static final String MOD_ID = "test";
 
     public TestMod() {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
